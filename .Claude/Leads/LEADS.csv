@@ -1,0 +1,157 @@
+```csv
+Business Name,Phone,Website,Reviews Count,Avg Rating,Address,Owner First Name,Owner Email,Status,AI Leak Report (Draft),AI Fix Instructions,AI Prediction,Human Filtered Copy,PDF URL,Date Sent,Follow-up Date
+"Example Plumbing","(555) 123-4567","exampleplumbing.com",4,4.2,"123 Main St, Anytown, USA","Mike","mike@exampleplumbing.com","New","","","","","","",""
+```
+
+---
+
+Instructions for Using This CSV
+
+Field Descriptions
+
+Field Type Description
+Business Name Text The name of the business as it appears on Google Maps
+Phone Phone Primary contact number (from scraper or enrichment)
+Website URL The business website URL (must exist for audit)
+Reviews Count Number Number of Google reviews (filter for <10 in Phase 1)
+Avg Rating Number Average star rating (filter for ≥3.5 in Phase 1)
+Address Text Physical address (for local targeting)
+Owner First Name Text Enriched manually (via Hunter.io/Clearbit/call)
+Owner Email Email Enriched manually (for follow-up and proposal sending)
+Status Select Pipeline stage: New, Ready for Audit, Audit Generated, Human Polish Done, Sent, Follow-up Sent, Closed Won, Closed Lost
+AI Leak Report (Draft) Long Text Auto‑populated by AI (P1-P2 output)
+AI Fix Instructions Long Text Auto‑populated by AI (P3 output)
+AI Prediction Long Text Auto‑populated by AI (P4 prediction section)
+Human Filtered Copy Long Text Your 10% human‑edited version (paste after applying 5‑point filter)
+PDF URL URL Link to your Canva PDF (stored in Google Drive/OneDrive)
+Date Sent Date Auto‑populated when Status changes to "Sent"
+Follow-up Date Date Auto‑calculated (3 days after "Sent")
+
+---
+
+Status Workflow
+
+```
+New 
+  ↓ (manual: run P1-P4)
+Ready for Audit 
+  ↓ (auto: AI generates audit)
+Audit Generated 
+  ↓ (manual: apply 5-point filter, paste into Human Filtered Copy)
+Human Polish Done 
+  ↓ (manual: generate PDF, send outreach)
+Sent 
+  ↓ (auto: follow-up date set for 3 days later)
+  ├─→ Follow-up Sent (if no reply)
+  ├─→ Closed Won (if signed)
+  └─→ Closed Lost (if rejected or no response after follow-up)
+```
+
+---
+
+Importing into Airtable
+
+1. Go to your Airtable base
+2. Click "Import" → "CSV file"
+3. Select this file
+4. Map the columns to your existing fields (or create new ones)
+5. Set Status as a Single Select field with the options above
+
+---
+
+Manual Tracking (If Not Using Airtable)
+
+1. Save this CSV locally
+2. Open in Google Sheets or Excel
+3. Update rows as you progress through the pipeline
+4. Filter by Status to see which leads need action
+
+---
+
+Lead Source Notes (From Output B — Apify Scraper)
+
+The scraper will populate the following fields automatically:
+
+· Business Name
+· Phone
+· Website
+· Reviews Count
+· Avg Rating
+· Address
+
+You will manually enrich:
+
+· Owner First Name
+· Owner Email
+
+You will manually update:
+
+· Status
+· Human Filtered Copy
+· PDF URL
+
+AI will auto‑populate (via Make.com automation):
+
+· AI Leak Report (Draft)
+· AI Fix Instructions
+· AI Prediction
+· Date Sent
+· Follow-up Date
+
+---
+
+Sample Data After Enrichment
+
+```
+"Rivera's Roofing","(555) 234-5678","riverasroofing.com",4,4.2,"123 Main St, Anytown, USA","Mike","mike.rivera@riverasroofing.com","Sent","Your phone number is buried...","Move your phone number...","Expect 2-3 extra calls...","Your phone number is buried at the bottom... [human filtered version]","https://drive.google.com/file/d/12345","2026-08-04","2026-08-07"
+```
+
+---
+
+Quick Reference — Lead Status Definitions
+
+Status Meaning Next Action
+New Lead imported from scraper, not yet touched Enrich name/email → Run P1-P4 → Change to "Ready for Audit"
+Ready for Audit URL ready for AI analysis Make.com triggers audit generation → Auto‑populates AI fields → Changes to "Audit Generated"
+Audit Generated AI has produced the audit Apply 5‑point filter → Paste into "Human Filtered Copy" → Change to "Human Polish Done"
+Human Polish Done Your 10% edit is complete Generate PDF → Send outreach → Change to "Sent"
+Sent Outreach sent Wait 3 days → Send follow‑up → Change to "Follow‑up Sent"
+Follow‑up Sent Follow‑up sent Wait 3 days → If reply, pitch retainer → If no reply, change to "Closed Lost"
+Closed Won Signed retainer Celebrate! Move to next lead
+Closed Lost No reply or rejected Move on to next lead
+
+---
+
+End of 06_LEADS.csv
+
+```
+
+---
+
+## Repository Complete — Next Steps
+
+You now have all 6 files:
+
+| File | Purpose |
+| :--- | :--- |
+| `01_LENS.md` | The fused identity — Devil's Advocate, Childlike Wonder, Architect, Engineer, Operator, Teacher |
+| `02_PIPELINE.md` | The 369 Architecture — strategic roadmap, phases, transition rules, revenue projections |
+| `03_SCRIPTS.md` | The complete outreach arsenal — cold call, voicemail, voice memo, follow‑up, retainer pitch, objection handlers |
+| `04_TEMPLATES.md` | The 7 copywriting archetypes — Fear, Social Proof, Ego, Urgency, Emotional, Logical, Story |
+| `05_PROMPT_CHAIN.md` | The Leak Report engine — 4‑step prompt chain + 5‑point Human Filter |
+| `06_LEADS.csv` | The lead database — CSV template with headers and dummy data |
+
+---
+
+### Immediate Next Steps
+
+1. **Upload all 6 files** to your GitHub repository root
+2. **In Claude.ai**, create a new Project named `"Command Center — Pipeline 369"`
+3. **Upload these 6 files** to the Project Knowledge
+4. **Start every conversation** with:
+   > *"You have full access to the Project Knowledge. Operate using the fused lens. Reference the pipeline, scripts, templates, and prompt chains as needed."*
+5. **Run the scraper** (Output B from earlier) to get your first 10 leads
+6. **Execute Lead #1** using the scripts and prompt chain
+
+---
+
