@@ -324,3 +324,4 @@ Every output should leave the reader thinking: "This understands my problem." "T
 - Models the GOATs
 
 **Prompt:**
+Help me make an elevated direct response copywriting skill. I want to model people like Alex Hormozi, Codie Sanchez, Justin Welsh, and other direct response GOATS while avoiding the hypy fluff. The skill should be able to use to write headlines, VSLs, emails, body copy, etc. It should focus on the core principles of writing but avoid learning any concrete frameworks that make the skill too rigid.
