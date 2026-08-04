@@ -1,5 +1,3 @@
----
-
 ```markdown
 # Outreach Arsenal — Complete Scripts (Enhanced)
 
